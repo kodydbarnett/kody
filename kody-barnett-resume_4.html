@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kody D. Barnett, PHR — Senior HR Business Partner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #0f2444;
+      --navy-mid: #1a3a6b;
+      --navy-light: #2d5a9e;
+      --gold: #b8923a;
+      --gold-light: #d4a853;
+      --cream: #f9f6f0;
+      --cream-dark: #f0ebe0;
+      --white: #ffffff;
+      --text: #1a1a2e;
+      --text-mid: #3d3d5c;
+      --text-light: #6b6b8a;
+      --border: #ddd8cc;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--cream-dark); }
+    ::-webkit-scrollbar-thumb { background: var(--navy-light); border-radius: 2px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(249,246,240,0.93); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 4rem; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--navy); text-decoration: none; }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.2s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.3s ease; }
+    .nav-links a:hover { color: var(--navy); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* HERO */
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+    .hero-left {
+      background: var(--navy); display: flex; flex-direction: column;
+      justify-content: center; padding: 8rem 5rem 6rem 6rem; position: relative; overflow: hidden;
+    }
+    .hero-left::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,90,158,0.4) 0%, transparent 70%);
+    }
+    .hero-left::after {
+      content: ''; position: absolute; bottom: -80px; left: -80px;
+      width: 400px; height: 400px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,146,58,0.15) 0%, transparent 70%);
+    }
+    .hero-headshot {
+      width: 110px; height: 110px; border-radius: 50%;
+      border: 2px solid rgba(184,146,58,0.6);
+      object-fit: cover; object-position: center top;
+      opacity: 0.9; margin-bottom: 1.75rem; flex-shrink: 0;
+    }
+    .hero-eyebrow { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; }
+    .hero-name { font-family: var(--font-display); font-size: clamp(3rem,5vw,4.5rem); font-weight: 300; line-height: 1.05; color: var(--white); margin-bottom: 0.4rem; }
+    .hero-name strong { font-weight: 600; display: block; }
+    .hero-credential { font-family: var(--font-display); font-size: 1.2rem; font-style: italic; color: var(--gold-light); margin-bottom: 1.5rem; }
+    .hero-title { font-size: 0.95rem; font-weight: 400; color: rgba(255,255,255,0.75); line-height: 1.6; max-width: 380px; margin-bottom: 0.75rem; }
+    .hero-availability {
+      font-size: 0.8rem; font-style: italic; color: rgba(255,255,255,0.5);
+      margin-bottom: 2rem; padding-left: 0.75rem;
+      border-left: 2px solid rgba(184,146,58,0.4);
+    }
+    .hero-meta { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .hero-meta-item { display: flex; align-items: center; gap: 0.75rem; font-size: 0.84rem; color: rgba(255,255,255,0.6); }
+    .hero-meta-item svg { width: 13px; height: 13px; flex-shrink: 0; opacity: 0.6; }
+    .hero-meta-item a { color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; }
+    .hero-meta-item a:hover { color: var(--gold-light); }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.7rem 1.5rem;
+      background: transparent; border: 1px solid rgba(184,146,58,0.7);
+      color: var(--gold-light); font-size: 0.8rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+      align-self: flex-start;
+    }
+    .hero-cta:hover { background: var(--gold); border-color: var(--gold); color: var(--navy); }
+    .hero-right {
+      background: var(--cream); display: flex; flex-direction: column;
+      justify-content: center; padding: 8rem 6rem 6rem 5rem;
+    }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
+    .stat-card {
+      padding: 1.75rem; border: 1px solid var(--border); background: var(--white);
+      position: relative; transition: border-color 0.3s, transform 0.3s;
+    }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0;
+      background: var(--gold); transition: height 0.4s ease;
+    }
+    .stat-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .stat-card:hover::before { height: 100%; }
+    .stat-number { font-family: var(--font-display); font-size: 2.8rem; font-weight: 600; color: var(--navy); line-height: 1; margin-bottom: 0.4rem; }
+    .stat-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); }
+    .hero-certs { }
+    .certs-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.9rem; }
+    .cert-badges { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+    .cert-badge { display: inline-block; padding: 0.35rem 0.85rem; background: var(--navy); color: var(--white); font-size: 0.73rem; font-weight: 500; letter-spacing: 0.04em; }
+
+    /* SECTIONS */
+    section { padding: 6rem 0; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 4rem; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .section-number { font-family: var(--font-display); font-size: 5rem; font-weight: 300; color: var(--cream-dark); line-height: 1; user-select: none; }
+    .section-eyebrow { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .section-title { font-family: var(--font-display); font-size: 2.6rem; font-weight: 400; color: var(--navy); line-height: 1.1; }
+
+    /* ABOUT */
+    #about { background: var(--white); }
+    .about-grid { display: grid; grid-template-columns: 3fr 2fr; gap: 5rem; align-items: start; }
+    .about-text p { font-size: 1.02rem; line-height: 1.78; color: var(--text-mid); margin-bottom: 1.2rem; }
+    .about-text p:first-child { font-family: var(--font-display); font-size: 1.3rem; color: var(--text); line-height: 1.6; }
+    .sidebar-block { padding: 2rem; border: 1px solid var(--border); margin-bottom: 1.5rem; position: relative; }
+    .sidebar-block::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--navy), var(--navy-light)); }
+    .sidebar-block-title { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-light); margin-bottom: 1rem; }
+    .sidebar-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .sidebar-list li { font-size: 0.84rem; color: var(--text-mid); padding-left: 1rem; position: relative; }
+    .sidebar-list li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 4px; height: 4px; background: var(--gold); border-radius: 50%; }
+
+    /* SKILLS */
+    #skills { background: var(--navy); }
+    #skills .section-number { color: rgba(255,255,255,0.06); }
+    #skills .section-eyebrow { color: var(--gold-light); }
+    #skills .section-title { color: var(--white); }
+    .skills-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
+    .skill-category { background: rgba(255,255,255,0.04); padding: 2rem; border: 1px solid rgba(255,255,255,0.07); transition: background 0.3s; }
+    .skill-category:hover { background: rgba(255,255,255,0.08); }
+    .skill-cat-title { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 1.25rem; padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    .skill-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .skill-list li { font-size: 0.86rem; color: rgba(255,255,255,0.72); display: flex; align-items: center; gap: 0.6rem; }
+    .skill-list li::before { content: ''; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+    /* EXPERIENCE */
+    #experience { background: var(--cream); }
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: linear-gradient(180deg, var(--navy) 0%, var(--border) 100%); }
+    .timeline-item { position: relative; margin-bottom: 4rem; }
+    .timeline-dot { position: absolute; left: -2.5rem; top: 8px; width: 11px; height: 11px; border-radius: 50%; background: var(--white); border: 2px solid var(--navy); transform: translateX(-5px); transition: background 0.3s, border-color 0.3s; }
+    .timeline-item:hover .timeline-dot { background: var(--gold); border-color: var(--gold); }
+    .timeline-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 0.45rem; gap: 2rem; }
+    .timeline-role { font-family: var(--font-display); font-size: 1.4rem; font-weight: 600; color: var(--navy); line-height: 1.2; }
+    .timeline-dates { font-size: 0.76rem; font-weight: 500; letter-spacing: 0.06em; color: var(--text-light); white-space: nowrap; margin-top: 0.3rem; background: var(--cream-dark); padding: 0.28rem 0.75rem; border: 1px solid var(--border); }
+    .timeline-company { font-size: 0.88rem; font-weight: 500; color: var(--gold); letter-spacing: 0.02em; margin-bottom: 0.35rem; }
+    .timeline-context { font-size: 0.8rem; font-style: italic; color: var(--text-light); margin-bottom: 1rem; padding: 0.45rem 0.9rem; background: rgba(184,146,58,0.06); border-left: 2px solid var(--gold); }
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+    .timeline-bullets li { font-size: 0.89rem; line-height: 1.62; color: var(--text-mid); padding-left: 1.2rem; position: relative; }
+    .timeline-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--navy-light); font-size: 0.75rem; }
+
+    /* EDUCATION */
+    #education { background: var(--white); }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .edu-card { padding: 2.5rem; border: 1px solid var(--border); position: relative; transition: transform 0.3s, box-shadow 0.3s; background: var(--white); }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(15,36,68,0.08); }
+    .edu-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--navy), var(--navy-light)); transform: scaleX(0); transition: transform 0.4s ease; transform-origin: left; }
+    .edu-card:hover::after { transform: scaleX(1); }
+    .edu-type { font-size: 0.66rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .edu-degree { font-family: var(--font-display); font-size: 1.25rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.2; }
+    .edu-institution { font-size: 0.86rem; color: var(--text-mid); margin-bottom: 0.25rem; }
+    .edu-year { font-size: 0.77rem; color: var(--text-light); font-style: italic; }
+
+    /* COMMUNITY */
+    #community { background: var(--cream); }
+    .community-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; }
+    .community-card { padding: 2rem; border: 1px solid var(--border); background: var(--white); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+    .community-card:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(15,36,68,0.07); }
+    .community-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: var(--gold); }
+    .community-role { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; color: var(--navy); margin-bottom: 0.4rem; line-height: 1.2; }
+    .community-org { font-size: 0.84rem; font-weight: 500; color: var(--gold); margin-bottom: 0.25rem; }
+    .community-dates { font-size: 0.77rem; color: var(--text-light); font-style: italic; }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 3rem 4rem; display: flex; align-items: center; justify-content: space-between; }
+    .footer-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 500; color: var(--white); }
+    .footer-contact { display: flex; gap: 2rem; }
+    .footer-contact a { font-size: 0.82rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+    .footer-contact a:hover { color: var(--gold-light); }
+
+    @media (max-width: 900px) {
+      nav { padding: 0 2rem; }
+      .nav-links { display: none; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 8rem 2.5rem 3rem; min-height: 60vh; }
+      .hero-right { padding: 3rem 2.5rem 4rem; }
+      .container { padding: 0 2rem; }
+      .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .skills-grid, .community-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { grid-template-columns: 1fr 1fr; gap: 1rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+    @media (max-width: 600px) {
+      .skills-grid, .community-grid { grid-template-columns: 1fr; }
+      section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#hero" class="nav-brand">Kody D. Barnett, PHR</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#community">Community</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCADIAMgDASIAAhEBAxEB/8QAHQAAAQUBAQEBAAAAAAAAAAAABwAEBQYIAwIBCf/EAEYQAAEDAwICBgUICAQGAwAAAAECAwQABREGIRIxBxMiQVFxFDJhgZEVIyQzQnKhsQgWJTQ1UmLBU4LR8BcmQ1SS4VWy8f/EABoBAAMBAQEBAAAAAAAAAAAAAAECAwAEBQb/xAAmEQACAgICAQQCAwEAAAAAAAAAAQIRAyESMQQiMkFRBRMUQqFh/9oADAMBAAIRAxEAPwDxc2x1S/KgtrsKE0gKIGfGjjdU4bX5UFNdp+n/AOakQhDxGOwnmSamodiub7fGzFUpPnTnREFubdGWXBtWlNMaUiC1jsJ9XwrCt0ZhkW+XFOHmCk+dcglX8h+NGzpA0/FYCylIz5VQTaWf9iiZOypji/wz8a+gq/wz8atfyUzX35KYraDZVMqP/TPxrohpZ9ZBHvq2RrSwpwAivd2tjLKSU4pW6CioqQByBzXxKXD/ANM/GpWPHQ6+UnxqyxbPHLCSRv5UHKgpFICXP8I/GvQQ4T9UfjV6+Ro/gPhXeBZoxmNAjIKvCl5hoqEGxXSaAWIhV76e/qdqD/48/wDlWidFabh9ShQQnl4Vekaeh8A7CfhQ5v4NxMdnR2oP+wP/AJV4d0jfm0lS4JSkd+a2R+r0P/DT8KaXXTkNURQ6tPLwrc2biYvcgvNv9QtlQc8Kfs6Tvj6QtmFxpPfxUU9U2GIxqdDQQMKUO6i5pTT0RMJHYTjh8KLn9GSMkTNO3iIcPQlZ9hr1G0zeZKeJmGT7M1qvUGmYKn8qbT8K8ae05DQ6QlCcZ8KHNgoy2dHX/wD7H8a8K0ffv+x/Gtiq09D/AMNPwrkrTkP+RPwofsYeJjlej77j9x/GlWwF6chn/pp+FKt+xmoDd5ThtflQS10Pp/8Amo63xGG1+VA7XKf2h/mqyFJboyb4r6yPZWr9NsfssbfZrLPRfwovba1cgBWobFO/ZnZBPZpkrJyewf8ASe2UpVtQ3KaI3SNKDqVoI39tD5SaDVGizhw0uHeuvDSxQGOkBpTj4ShJUonkBT+82K5uMFaYxxjvO9S+hI7SnlOKAKhyzVsu3ZYOeWK5MuZxlSL48dq2AuOw4zPU26goUDyNW6KPmE0w1Etpd3BbxnO+Kkow+YT5VRu0mLVHrFOLcn6cz96uQFOIBCJja1cgaBg46Jb+jI8qu7aBwChppC8I6pCRnYVdEXhsIAJPwp1A3ImOAU2uSB6Mrypl8st+JpndbygRVEE8qPA3JAj1mj/m9kf1D86MWlkYgo8qBuqrs05qZtfF2gsUV9MXpPoSM59WhwYEyRv6fna56fT86fOoa/35pD/aVjzrlYr2nrSoHs0ODNyL4pArmpNQK7+2O81xXqFv+Y1uDDyRPqTSqtK1E2PtH4Uq3Bm5IFt+T8255UCtcjNxH3qPV/T8255UCdbDN0H36siZP9GURci9tISPCtTWG1rTawOH7NZ36FGh+sjeQPVFaztiEC38h6tUj0SluQC+kq3qZUpxW1D9SaLnTAB1BxjnQoUmln2aHQ34a+cNdimvmKUexzaZj8N8KZOKeX/UM9yOUbAYqPjgce5AHia4ahcbZjuOurShCU5UonYCpThFu2ikW6IKK4XJannljnuScAVNz75arVbUy5s1ptrPCCDxEnwAHOg7q3VjEhLkGLx9UVAqUOasHPuFVXrzIWQ1IX1hOSh4DBotWOo/YbJ3SbpiO2lbK5UvP+E1jHmVYp5YOkLS1ycSHZbsPG6g+2RgeYzQCW06lLr6GilTRw+ye4ePlXtbK4jiHErPVOkcKvEYBx+P4UOKG4my+jjpI6PZswwPl5uI4jHAuWgtId+6o7E+w4NHG32+NMjIkRXmn2ljsrQQpJ94r82JkbqLhFZI2cjdYk96uIH/AEol9AHSrfuj7WhgB9yZaXDwyoTqjwAZ+sR/KQDnI57g00Zr5EeH6NyfIns/Cmd2sZMVQA7qsun7rCvVsbnw1AtqPCR3pUO78R8acz0p6g7DlVaRPijL2otNOnWTSiDnj2oyaZsJRCQFDfhqsajSP12jDA9cUWbKlPoydhyrUJDbBxqbTHpLuOGumnNOFtPAU8vZV5uqU9ZyFfbQhOeQrUHjsr69Og/ZHwrivTf9I+FXooT4CvhQjwFakFxKCvTX9I+FKr2W0HuFKtQOBm3UKfmXD7KA+sx+1k/fo96hHzDvlQH1gP2wj79BBLv0Tuli+t8I7SgBWpbUtxVtBKt+GszdD0UP39sHuArVFshBNvAz9mqIk9yAz0prc4yknKc0Oliir0ux0NMlQG+aFqhSy7DA4FNfAmupFfMUg5HX94M2WYoPJZc6opbURntkbbd+/dQWv19uT0HqHbhLcQAE8C3eJORzI/tzq99MUxxiFAYS4UIWpa3CPAAD+5oTzyt5tppofOOKCQkcxnkP9+NI9ujogqVkchhb6lJSoAgZwe+peLD9JitgIV6S2rAUBnIH/qiLpno7hpt7Rllan1AFWPyq8WXSFtiNhLcRJPeVbmpzzJHXi8WUuwOO2e5KJkJZUcslleE+snG2fgKh12yatLEZTbhS0d9q1vZLXGaj8KIzeAOXDtT+2WCLOkKUu3RSnOMloZqKznXLwP8AplRcGclxu4zGXEpZZLaMpOOR/wBagjIl/KjsxsltxY4SeWBjH5VuO46StU62LhPRGurUnGyRtWUekbSj1g1LIgpHqKJa/rT4VseW3TI5/G4K0wx9AfThO0+yi13xpp+1rc43pWVdcwMBOeEZCkjAz31qs3Nq4WZqfDeDkd9sONLHJSTyNfn1oGTCY1BAbVbETHX+Jj0dSuFDilpKBknYDJB32GK35pe0y4Oh7TbriUmZEgMx3ylXECtDYScHvG3OuzE20eblVPQHb9eHP16ZYI7fFsaNGn33FQ0knuoUX20NHXTG3aKudGCyQeCIkA91UOeF2RlzekKkBLQCjyqQtcOalvrFKTk91ezESmRlXPNTsVoBsGsMk2yEdefbUUq2NczKd8al7jDS4niHOo4wPA1hmmMpFxWzuo0qbaht61RzwrIOO6lQboS2BXUQ+Yd8qA2rh+2Uffo+aiHzDtAXV38aR9+tQUwldCY/5iR90VqmAPoHurLPQnvqFHkK1PC/cP8ALToRe5gi6YvqffQpUKK3TCfm8e2hYobUsuxYnEivhFeyK8kUpQAvSNPkzNRy/SXT8y6ptLedkJScJH965dGtvRddTNqf3bY7ePFXdU/0t6SuCbnKv0RlKoS0pU6UntJVyJI/HNRnRcpuNfWlrcKGkhS3FYJ7uWwqcl6XR1YmuSsOlvaSiI2o+sBjzqXjSFrwOrOPZQ+RrNauI2uzz5zSdg6hvCVH2E7YrjH6TbnEkqTc7G7EZQe1lPGR54/0rllgyfKPYx+RjWrC7BlFnKUtlSiORNT9hcmBo44UIJyTVDRqmENLualaRxRExy8FjvSCAce8iqdP1Tr6RHTcWJsSyQniktpkgFwpPI8AGRt4nPspI4JS39FpeRBdbNIQ3GiC2XUKcxuAaB/6Q1lWL1GlJRjrEEpVjYkVAWd7pAuy3DZtUQJExI7CiwAni7hni2z5VZIg1/rDovVd9SpittMOrdbbkR+pkhDfZUcJGBk5xnmN/CjHHW7OfNl5KqewW9HdpVd+kiw2tpsccmYlv1eLHbQSR5AH8a/ReUhDcYpQkJSBsBWSv0ZLai29I72pLrb1R7c1GUzHfdIWOtcIwpJwMDAI5Z3Na3mn6OSNxiu7E4vpnk5YTjTkqT6A5e99exvvUW7QPoyfKhJdt9fx/M0XbT+6p8qqcmPtjC5OFt7IqQtM9LrISoHIqMvH1hr3Y/U99AdP1E0+6FpwBTc0nFhIrgHwVc6wzYzvY+YPlSpXghTBPspUGIwD6jHzDvlQD1f/ABpH36PupR9Hd8qAOrv40j71NQsQndB2+oE+QrVEPaB7qyt0FH/mAeQrVMT9w91FAXuYIemD6v8AzULlUUOl85R/moYHlQYqOShXmvahXmlHQ2uj0SNaZb05KVRUtHrQoZBSdsfjQ+sWl1OXkW1VylIhtwS/BUwOrLaVr7QO2VHu39lEC8wlXGzTISDhTzRSnz7qYWp0KvsVJATi3hABGDnKSd/dXNmnKL0ep4mGE8Tb7T/waXZqVEHoEGWiPCjtBKCRuQBgchiqUxaLjNuReLq3+J0knBAIzyztRbudpaejLktPKCxsUpPre6q4MM/WqDLaSeJxQxgDnXfP8p+yKjOPwWXhU7TLR0V6dgzLNO067GYRDltLUtBRxBJJyk788ECoLV+mp0++LS62Gls5Q8wF48iPZ4Grr0Sy4EqW67GuDBSGyFr54A3z76uFxRCuiXHBcGZqVK4UNlgYb28Sn/8Aa8mMpRto9H+PCUYr6QN9BwLRbUM29m3lT7aiULccJUCeeMUYjBVKsEqE6SRIZWg8RzjiSRVFsTkW26mRbZlvYiOrOW3G04S6nxHt8RRSmhuPGcLRyEoJz47ZqMrlts04xgqRRJc1mVpV/SLUUsOptTJilQHA8tKArKfbkEUeWEuIsUVL27gjoC/PhGaE2kdNG+v6euTj6lKjxm+raSOylBTkqUeZOSfZyoxXHAjnHhXT4UWrbOH8nkg8cIR77YHbjv0gM+ZovWr91T5UIJhz0gtD2mi/a/3VPlXeeFi7ZF3n6w11sn1dcrx9Ya62P6v31hv7DmaSAcVFNPLMgpIqTuGcHFQscr9KORtQFm6Y9uO7B8qVebifmD5UqDGAdqT92doA6v8A4yn71H/Uv7s7QA1d/GE/ep6ETCZ0DnN9z5VqiKfoHurK3QJ/G/hWqIv7h7qyAvcwRdL3qj71DI0S+l07D71DM86zAjyquZroa8Eb0oT3H9eoy9NR4k6PMCEhxT3AV4wUgoVtnwzipOP64qN1ewuTaXkNfWpwtv7ydx/pUcsbR1+PlcHr5HM+fKhac9IhNKffff6hPCM8HZJJ/DAqlOz0S3xbUTQqerb0eO0Xloztvjanuh9Wqt0Cch4B+O63xt8XNtwf7/Ony7PAnSGNR2h0Q5biO06ySOLxCsHfeuHpuz2scnJdjvQlk1FGWXLVEuwkOhKQ/wCghKQFnA9ZWN8Hc8qIlu0vqCJHXcLyxfn0sIWtahIaSAEq4SAPZz8t6pFuvt+tbaIy9SPNFZHD86o9+e8beVErTlmReLaqRfrrMuAdG4cdXwqSTnGFHGM+yttnWo1Htf62UVd8h6sR6Zp5y5SGwvq0GTHLZaeSduFXJRzzx3c6LtyuqWkOR1KKltx0heP5sE/lj41QtQahtlr1Pa7ZbGWTChKJdaa2Snblt318i335bmMWeGD6RcJAa41cypagPgP7VKTtviRm0n6jR2gokeJo+0hhhDRVCZKilOCo8A51I3M/R1eVdYMduHCYiM/VsNpaR5JGB+VcLofo6vKvYiqVHz05ctsD72/SC376L9s/dR5UHic9ISfZmjBbf3UeVMQxdsi7x9aa7WT6uuF4PzhrvZPq6wf7D2S3xCmSI2HM4qTO4rzwjwoDOKZEXVPCwfKlXu+/Uq8qVBgATqb91c8qAGrP4yPOj9qc/RHKz/qo5vI86qySYTugTAvKidgCK1LFWn0Dn3VkzoWdWi8hIyASM1qCI5+zfW7qBk6bBp0uKBAIOe1Q1NXnpMcUX+HJKc1RjQYEeTXg17ptPlRoTCn5b7bDSealqwKUZDhj1xTe8ONNMrW64lCR3qOBQ31X0oJjlTFhaC1Db0h1O3uT/rQ4n3e93+Txz57zuT9pXZHkOVbg2ViqRc9SR0emSJ1hkolpA4pkZlWSkE4KhjmD3ilpbUL8F1lTT3Eyk4CCdvIipToesrbkK9yWiouQ2mCr+rjWQSfLA+NSN20tbpUj0nqlsvE9pTR4cnxI5GuXNBcqPSwcuHJEtEvFsmdTIlJSHFrA38fAVcLhqdDdsYgxnCEpypQB3Phn8KFP/D6fNktohXhaEpUFJStvOD7MUQNJdC13m8K7tqR0MZ7aWG+FSh7VEnFRnHVI6oZp30V9+W89ceot8d2XcJJPVMtDiV5n2D27Ci90S9H9xtryJ9ynkXmSOrY6rtJhqVsCkn1lA435VYdM6SsWl2C1bIiWyr6xw9paz4qUdz76sGhrozdtb+gQCHI9qR6RPkDdKFfYaB7yTlR8APbQxwqoo03ac5FUY/Sbt9ktrCNV6cuLkhrLUqTAKFN8aTwlXASCMke2p20/pH9FOoEBhF9etzyxgJnxlNDP3hlP41lnUElMp6Y+ACh6Q+sDuIU4oj86Gl4jstOcbKODOdk8q9meJLaPBjJyRue2yo07W7cuHIakx1pyh1pYUlQ9hG1Ga3EejDfur8zdCa11BpKc3Lss9bJSe02rtNr9hSdq01oP9KC3vRW42o7G9HfAAU9DcCkK9vCrBHxqbg/g0Y8TQl2I60713spHV86EqOmXQ12eS2xfW4zquTctCmT8Tt+NX7TVzblQw/HfbebUMhbawpJ94pGgX6i359tfM1Eelq/mr76Wr+asNyR8vysMq37qVQ2o5TnUK4T3UqSTA5IEWqD9Ec8qz/qn+MDzo+6oP0RygDqc5vPvroaJoI3QcEqvJCh3itQxGm/k/bwrKXQ7IDN4znGSK0Hf72qFoa6zG1fOMQXVpx4hBxWUbQnJKTA30t9Jmj2ZT8eHOM2Qw6W1oYQTuOfaO2O7NCC59J81wlNut7TKe5TquJXw5VQpxUZBUSdyQT41yxmhx2XjBJFil611DIJLlwcHsR2R+FQVzuM64KCpcp1/HILUSB7q5hBNdeo7PLemURtEPIG/tp3CSUAA8++uclPVuhZTkD8PbXZvHDkHIO+aVLYz6DR+jCWJuo79aJIy1NgJCgOeAvHx3q+3CwKiXCRa5gxKYwQscnkHdKx5j4HIoW/oxP8AU9JuCoBCoTpWSeQBSc1onUBj6rjMv25PUSoZIYkOeq82eaDjcb4IO/fyrnzw5O12dfh5v1updMHLUdyFJDjQ7STyxzopWm8xvkpt51XVoKcrT7aH909IhSVMzWCy+kZKT3jxB5EHxFQ11uz7zHo7a+FHfwmuWmepcfgsOuNbzbi8ix6dQpTj6w0ng9ZajtiirBs7fRf0CXuXkKuHoLsiS93reWnhHuBIA8qiOh7o2ahaQd1TPa6y6TY5XDHP0do7g/eV+A27zUD0yasekdBF3gOyC6s3ViCFE5PD9YU578cNdWDHUk2eZ5efmnFdGb1Og25CRnITvVPuKesDqM7pJUnNWS4r6plvCsYG9Ve4NvPrBAAbIBKRzUfbXoZHZ50FQwinb2U9aUQdjTbHArhxg+FOGG1LOBU0UY8RJcUjq1HiA8akrBqW/aekB+yXaZb3Bv8AMOlIPmOR99RPDwLAPM0n1BCOsI2SM0aFD90e9P2slH0K5xIN34SnLy0lpYHeMp2JI78be2tM2+4M3Wyw7rDVhmUyl1AJ3TnmD7Qcj3Vh3o5jdRbVy1jtKOcnxo3aU6Q2LVpu32d+QlDyFL4QTjslWR+ZoZMaUFIk5Uw5TGlPMq4iOVKqnatRolxOMOAgjxpVxS7NdlM1UfojnlQB1If2z76PWq1fQ3N+6gDqJWbx767JIES79FLZduu3cRV5/SE1De9L9Hsb5LbR1dweMWU6pHFwNlBOB4E7jNVDoVAVdFbZ7Qqv/pN67XerujT1sdBgWlfzmDs89yUfaE8h76ZaiTUeWQE8kBQWsDbiBHvrw22VGk2+H4zixyISR8afRmhwZxzopHS3Q0bACyPA16uilMxUuIPNWDXGQerfPgTXe4jrrS4RuUji+Fb4NZ4cYa6sKwVEjvpstHD7KeFQ6lGPCmy9xQoNhB/R3QVa/cAGQq2Sk+8pAA+JFaS0/aJVrjFpC1Bsnsd5Qe9JrNvQSpxnVDT6FlOHGwrH2k9Yk48sgfCtb3Fz0CcpTiCuM8AVp8PaKlOKfZSD0U7pAss662ESYbKX5kNeyErAWpsg8QAPrYIBAHiaDbM0KW4heUqQSCDsR51p9tUNyMchL7at0rHPyPtqkI6NI916R/l5lrrIKWutej42XIBwFK7uHGCfEgVz5MdvR2Yc/BU+gldHepHJfRhHQ7DXCmRISGAys5K+zwoWPAHng7is29PlziwUMaNiZJZuJlSFdyl9UE48wSqtHsRzbkyJDmFrbQVlI5EjkPjWUenVLcbU1ui8fHKKHZElfepa1Dn8K6scKaOPI00wc3wuLRhpYQoHmRkeVQ/WPlQbcbSk42Uk5FSdyXlWM1GKWEqyeSdzVJLZKL0NHCXZ7vDvghA9wqeixBHila+ZFR2m4pffStY7+I58TvUzfHOAcAJ5dwoxVKwSe6IKUvLu3ca+yzxRUp/nWBTdasn208jNKechNgeu+APhS9jdBFsDSY9iaLyw00hPEtVU/XU2RcIcG4tJW3FDzjLZGwHq4Pmd/hUnqiY9NnM6btx7KcB5Q8e/4VJGDGm252wjHVJZw1j7JG4V55q2SPKLiiMXxdhF6IZjqdJwEreWslobqOTzNKoboxkKj6Whh0YWjiQoeBCiDSryZr1FeF7CLqxf0Je/dQC1Ar9sHzo6arc+hL8jQFv6v2sfOu+fRGBZdP39WnNP3G5NKxIx1TB8FqGAfdufdQnluuOvKcKipaiSSe81IahkvGQWQ8vqwB2OLs58vH21FtrTxAOjsHmeeKy6orGNWxs04WetSPUWOXgc5xVmiYVGSociKrVwT1avPkfEVPWNzjtqD3gU0O6NLoZ3ROFZ/KvUFwLYW0o7FJFK5b/GmKVlCTis9My2h80OKM2rPNI/Kk8nCCc91dbSgOQUEjkMV6mpwgDHdR+DXsvXQizm7hX9bf8A9v8A1Wvbuht6C0V8wkflWVv0fopk6njxkjPEpKyPADJrSmpJhLiYbRx3GpSKw6G1ujF2V1cYKJJAwk7E5osGK3aLOIbOMBvtHvUrvJ8aqGkYCIzVvWsYckSkkA/yIBV+YFWXUEnsYznKTSUFsrl4ltRrHLmPnCBknyFYz6VJEiVrRM2SSHH2C7j+VJUQB8BWp+kqQRbG7cg7HHEPE1ljpkPVa9dY5FmEynyyCr+9Uh7hZ+0pM1zKzTJKC6Fgd4x8f9muklRJOa9sKDMXi+24rbyG396ftidIm7C2llskc8VF354qeIJ76k7aeCEVKO9V+UVS5/Vt75OKeXVCx7sbJGTVltyUMXKAjGVR2S+v76h2R8B+NR64QZlx4oGVEjippdLgUzpqG1lKVOkLWOeBsEj3ClXp2wvZNW2W3b1zJCT18ktq6xwHPbVsEDxNTFhdXGHUbyLlIIU8E8mh3JJ7qqENZSyhSz6K0PUA3cUf6R3H+r4VN2md1ABZQ20E+qkqw23/AFLPNSvZVIsSSCdakJZhFCTzWVHHidz+NKqvZXpcq5QnWFvIisIcDy3Nuu4sY28xnPdSrjzYZc7iikJKthZ1U59BX5UA9WrAfdVx8JJwN/jRo15cGIFlflSF4Qgcu9R7gPaazzcpbs+Wt9YyVHlnspHhV5k8a+RrwFRJG/v3pxHQ2scC07+HjXMbbKd3P2UCnsRstnj6lwqI2yoVoodsib1GS1G4m1EpB2Se7yp5ptzNvAzTi5JbdiuJeSU7EgkcvfUbppz5haQc4rVUzdxHlwO5qPPfTucrKsU1UMIJoSYUS1hIMFQ/lJ/OlLypQHMU1064VpeQO40+U2VOCmjuIr0w8fow2tthm46he9ZCRHa9m2SfxFFmyNLu144jkpUrJPgKFnRJJEHo/YjI2dmSnFY9gIT/AGo46NhCBbuvcGHFj4CkkrlRWLqJOlQTqK1so2Q0w+vA8kpH5mu1yd6yRwnkBvUBZpZk61kgnssQgBnxUsE/lT24SOFbis7HO9I+wlL1C4Jd4OTlKFZrLHS1LErpLvK0nKQtDY8koSK0vIkBMeVMUeXEqsj6mfW9qW4vrPbceJPvowezTWiMdOVeZr4ol2ehgcmgEnz5n8adWmKqdd4sNC20qedSgKcVhKcnmT3CiFZNM9F2ncytVaul3+bkqVCszeEZzyLh/wBRTtkynSXHChuDCZekynsJaZZQVrWfYkbmr5pTogetEZm+9KFz/Va3OdtFvQoLuctP8qGx9Xn+ZXLwFSJ6WU2hlUTo70tbdLNKHCZYQH5ix7XFcvxqkXO7TbhMcm3Ka/MlunK3HXCtavMnu/Cmpyf0JdI7a+n2ebq9262e0NWiAEAR4rZz1aG0hCcnvUQMk95JoYR3FuvF3gC1lRUAeQyc586sGpJykxnO0MlJA9magIiilkIb95pcjV0h4LVskAMK66Y9xKP2RufKrLpeDv8AKM4JjxkjDaVbk+2obT8Rlx1UmQeJDW+/eadXC6OS3iFK4WUbJQOQpo62wS3pFrTfHJNxYgQE8DalgE43VSqK0aoC5CcsEJaGd6VXg7VslJU9Eh0u6m+V7wYEVfFChqKcg7OOd6vIch76ozQLhx84r2JFKlXN2yy1Efxkra3bioB8VK3pwFPqPaS3v4KpUqqkTbPknKWSM4FVmDIMeU4QkcPGQUjYUqVTyaaHh8j1Tjbh4uI++m0x7CSE0qVJLodDzR5PXSMj7INT4ACgSKVKq4vaSn2HvoGtD06LGlyEn0dhHC2D3nOSfiaONxkpjRAgEZ5UqVBLVlBnpxoN36Q+rfr4o4gfYr/3Xa/uIYiPlKiUpQojJ5bUqVRkh0De7LI04tI9Zxsn8KypqfKNSz0nueI/AUqVCHYZka8fobpP2ilO/hnenUUBScJGfypUqsuyLH7XGGwCcY7hX11wNt786VKqCFVvz/WrCCdid65tHCUoT5UqVc1+pl10Syn+qjJYaOxHarnFQVuDmR30qVOK9InGJao6A03jq1esKVKlVLJ0f//Z" alt="Kody Barnett" class="hero-headshot" />
+      <p class="hero-eyebrow">Senior HR Business Partner (HRBP) &amp; People Operations Leader</p>
+      <h1 class="hero-name">
+        <span>Kody D.</span>
+        <strong>Barnett</strong>
+      </h1>
+      <p class="hero-credential">PHR — Professional in Human Resources</p>
+      <p class="hero-title">Trusted advisor to CEOs, division presidents, and site leaders across PE-backed, manufacturing, and multi-site environments. Eight years of hands-on employee relations, workforce planning, compliance, and HR infrastructure built to scale.</p>
+      <p class="hero-availability">Currently exploring Senior HR leadership opportunities in the Dayton area and beyond.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dayton, Ohio
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5 19.79 19.79 0 0 1 1.61 4.93 2 2 0 0 1 3.6 2.68h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 17.5z"/></svg>
+          (937) 308-6347
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:kody.barnett@outlook.com">kody.barnett@outlook.com</a>
+        </div>
+        <div class="hero-meta-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/in/kodybarnett" target="_blank">linkedin.com/in/kodybarnett</a>
+        </div>
+      </div>
+      <a href="mailto:kody.barnett@outlook.com" class="hero-cta">Open to Opportunities &mdash; Let&rsquo;s Connect</a>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-number">3&times;</div>
+          <div class="stat-label">Workforce Growth in 6 Months</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">13</div>
+          <div class="stat-label">Acquired Locations Integrated</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">$3M+</div>
+          <div class="stat-label">Comp Consolidated into One Framework</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Complex ER &amp; Executive Investigations</div>
+        </div>
+      </div>
+      <div class="hero-certs">
+        <p class="certs-label">Credentials &amp; Environments</p>
+        <div class="cert-badges">
+          <span class="cert-badge">PHR Certified</span>
+          <span class="cert-badge">PE-Backed</span>
+          <span class="cert-badge">Manufacturing</span>
+          <span class="cert-badge">Employee Relations</span>
+          <span class="cert-badge">Multi-Site</span>
+          <span class="cert-badge">Multi-State</span>
+          <span class="cert-badge">Healthcare</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <div>
+          <p class="section-eyebrow">Professional Summary</p>
+          <h2 class="section-title">About Kody</h2>
+        </div>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I&rsquo;m a Senior HR Business Partner (HRBP) and People Operations leader with 8 years of progressive experience in employee relations, workforce planning, compliance, and HR infrastructure across manufacturing, PE-backed, and multi-site environments &mdash; from 50 to 1,200 employees.</p>
+          <p>I&rsquo;ve served as the primary HR partner to CEOs, division presidents, and C-suite leaders, independently owning the full spectrum of HRBP work without relying on a deep support structure. My environments have ranged from PE-backed growth organizations and government contract research to multi-site retail, healthcare, and precision manufacturing &mdash; each requiring different compliance depth, stakeholder approaches, and workforce strategies.</p>
+          <p>What I bring that most HR leaders can&rsquo;t: I&rsquo;ve done this work where there&rsquo;s no room for theory. I&rsquo;ve resolved active EEOC claims, conducted C-suite and executive-level investigations, led M&amp;A due diligence across 13 acquired locations, corrected FLSA misclassifications before they became lawsuits, and built compensation frameworks from scratch &mdash; all while staying the trusted advisor leaders actually call when the stakes are high.</p>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-block">
+            <p class="sidebar-block-title">Systems &amp; Technology</p>
+            <ul class="sidebar-list">
+              <li>Workday HCM</li>
+              <li>UKG (Ultimate Kronos)</li>
+              <li>Paylocity</li>
+              <li>Paycor</li>
+              <li>ADP</li>
+              <li>Power BI &amp; Looker</li>
+              <li>Microsoft 365 / Viva Engage</li>
+            </ul>
+          </div>
+          <div class="sidebar-block">
+            <p class="sidebar-block-title">Compliance Depth</p>
+            <ul class="sidebar-list">
+              <li>FMLA / ADA / FLSA</li>
+              <li>EEO / EEOC Response</li>
+              <li>OSHA Safety Compliance</li>
+              <li>Multi-State Employment Law</li>
+              <li>Workers&rsquo; Compensation</li>
+              <li>SECURE 2.0 / ACA</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <div>
+          <p class="section-eyebrow">Core Competencies</p>
+          <h2 class="section-title">Skills &amp; Expertise</h2>
+        </div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <p class="skill-cat-title">Employee Relations</p>
+          <ul class="skill-list">
+            <li>Investigations &amp; ER Case Management</li>
+            <li>Executive-Level ER Matters</li>
+            <li>Performance Management &amp; PIPs</li>
+            <li>Corrective Action &amp; Terminations</li>
+            <li>EEOC Charge Response</li>
+            <li>Conflict Resolution</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <p class="skill-cat-title">Strategic HR &amp; Talent</p>
+          <ul class="skill-list">
+            <li>Workforce Planning &amp; Org Design</li>
+            <li>Talent Acquisition &amp; Full-Cycle Recruiting</li>
+            <li>M&amp;A Due Diligence &amp; Integration</li>
+            <li>Succession Planning &amp; 9-Box</li>
+            <li>Change Management</li>
+            <li>Executive Partnership &amp; Advisory</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <p class="skill-cat-title">Compliance &amp; Operations</p>
+          <ul class="skill-list">
+            <li>FMLA / ADA / FLSA / EEO</li>
+            <li>Multi-State Employment Law</li>
+            <li>HRIS Implementation &amp; Optimization</li>
+            <li>Compensation &amp; Total Rewards</li>
+            <li>HR Analytics &amp; Power BI</li>
+            <li>Policy Design &amp; Governance</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <div>
+          <p class="section-eyebrow">Career History</p>
+          <h2 class="section-title">Experience</h2>
+        </div>
+      </div>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Fractional HR Leader</div>
+              <div class="timeline-company">Barnett Advisory &mdash; Dayton, OH</div>
+            </div>
+            <span class="timeline-dates">Dec 2022 &ndash; Present</span>
+          </div>
+          <div class="timeline-context">Embedded HR leadership and advisory for 12+ organizations across healthcare, engineering, services, and manufacturing. Retained on an ongoing basis by 7 clients.</div>
+          <ul class="timeline-bullets">
+            <li>Resolved an active EEOC claim as the first engagement for a manufacturing client &mdash; navigating the investigation, driving remediation, and transitioning to an ongoing fractional HR relationship.</li>
+            <li>Led end-to-end M&amp;A workforce integration across 13 acquired locations in Maryland and Virginia, aligning payroll, HRIS, HR policies, and management infrastructure across the combined workforce.</li>
+            <li>Identified and corrected FLSA exempt misclassifications for nearly 20 team leaders across a multi-state organization, mitigating significant wage and hour exposure before any regulatory action.</li>
+            <li>Negotiated a 60%+ reduction on a Paylocity enterprise contract and led full HRIS implementation for a 350+ employee multi-state organization, eliminating 40% of manual data entry.</li>
+            <li>Placed 20+ clinical roles in under 90 days for a healthcare startup, building employer branding and launching ATS-driven full-cycle recruiting from the ground up.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">Senior HR Business Partner</div>
+              <div class="timeline-company">Accelevation LLC &mdash; Miamisburg, OH</div>
+            </div>
+            <span class="timeline-dates">Apr 2025 &ndash; Oct 2025</span>
+          </div>
+          <div class="timeline-context">PE-backed organization that scaled from approximately 450 to 1,200 employees through three acquisitions in under six months. Position eliminated following a restructuring of the executive HR function.</div>
+          <ul class="timeline-bullets">
+            <li>Trusted advisor to the CEO and General Counsel on the performance management and separation of the Chief Marketing Officer &mdash; leading notification strategy, executive communications, and transition planning.</li>
+            <li>Conducted a formal sexual harassment investigation involving a founder of an acquired organization, partnering with General Counsel to reach a defensible, well-documented resolution.</li>
+            <li>Designed job architecture and piloted a unified performance-based comp model consolidating $3M+ in legacy variable comp plans into a single EBITDA-linked framework.</li>
+            <li>Built internal communications infrastructure from scratch, migrating 350+ employees to Microsoft 365 with Viva Engage &mdash; 35%+ engagement increase in 30 days, $120K annual software savings.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">HR Business Partner</div>
+              <div class="timeline-company">Riverside Research Institute &mdash; Fairborn, OH</div>
+            </div>
+            <span class="timeline-dates">Feb 2024 &ndash; Apr 2025</span>
+          </div>
+          <div class="timeline-context">Lead HRBP for a $90M+ global business unit &mdash; 250+ employees across multi-site, government contract-driven operations.</div>
+          <ul class="timeline-bullets">
+            <li>Developed and delivered Compensation 101 training enterprise-wide ahead of a 700+ employee merit cycle; automated merit recommendations with IT &mdash; 100% resolution of prior-cycle pain points per executive survey.</li>
+            <li>Built Power BI and Looker dashboards tracking comp equity, attrition, and labor cost vs. contract revenue &mdash; directly influenced merit budget decisions and a company-wide return-to-work policy.</li>
+            <li>Led end-to-end RIF for 20 technical roles across three defunded government programs; single complaint filed was investigated and dismissed as unfounded.</li>
+            <li>Administered FMLA, ADA accommodations, and workers&rsquo; compensation cases with rigorous documentation; facilitated succession planning and 9-box reviews for 25 key Mission Lead and Project Lead roles.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">HR Director</div>
+              <div class="timeline-company">Bob Ross Auto Group &mdash; Centerville, OH</div>
+            </div>
+            <span class="timeline-dates">Aug 2021 &ndash; Dec 2022</span>
+          </div>
+          <div class="timeline-context">On-site senior HR leader &mdash; 150+ employees across four locations.</div>
+          <ul class="timeline-bullets">
+            <li>Implemented Paylocity HRIS and digitized 400+ personnel files; conducted comp market analysis delivering $246K+ in annual cost savings while improving retention.</li>
+            <li>Administered FMLA, workers&rsquo; compensation, and leave programs across all locations with consistent documentation and manager training.</li>
+            <li>Contributed to a 36% improvement in safety audit scores; advised leadership on ER matters, disciplinary actions, investigations, and terminations as the primary HR liaison.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">HR Manager (Interim)</div>
+              <div class="timeline-company">TCN Behavioral Health &mdash; Xenia, OH</div>
+            </div>
+            <span class="timeline-dates">Jul 2020 &ndash; Aug 2021</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Promoted to Interim HR Manager during organizational transition; managed full-scope HR operations in a regulated behavioral health environment, administered FMLA and ADA accommodations, and supported acquisition integration of approximately 50 employees.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-header">
+            <div>
+              <div class="timeline-role">HR Generalist</div>
+              <div class="timeline-company">Nordson Measurement &amp; Control Solutions &mdash; Huber Heights, OH</div>
+            </div>
+            <span class="timeline-dates">May 2018 &ndash; Jul 2020</span>
+          </div>
+          <ul class="timeline-bullets">
+            <li>Built HR foundation supporting manufacturing and technical teams; led Workday and ADP implementation improving global data accuracy and system adoption. Progressed from intern to full generalist in under two years.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <div>
+          <p class="section-eyebrow">Academic &amp; Professional</p>
+          <h2 class="section-title">Education &amp; Certifications</h2>
+        </div>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <p class="edu-type">Degree</p>
+          <p class="edu-degree">Bachelor of Science, Psychology</p>
+          <p class="edu-institution">Capella University</p>
+          <p class="edu-year">2021</p>
+        </div>
+        <div class="edu-card">
+          <p class="edu-type">Professional Certification</p>
+          <p class="edu-degree">Professional in Human Resources</p>
+          <p class="edu-institution">HR Certification Institute (HRCI)</p>
+          <p class="edu-year">PHR Certified</p>
+        </div>
+        <div class="edu-card">
+          <p class="edu-type">Certification</p>
+          <p class="edu-degree">Mental Health First Aid</p>
+          <p class="edu-institution">Society for Human Resource Management</p>
+          <p class="edu-year">SHRM Certified</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY -->
+  <section id="community">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <div>
+          <p class="section-eyebrow">Giving Back</p>
+          <h2 class="section-title">Community Leadership</h2>
+        </div>
+      </div>
+      <div class="community-grid">
+        <div class="community-card">
+          <div class="community-role">Secretary, Board of Directors</div>
+          <div class="community-org">Family &amp; Youth Initiative of Ohio</div>
+          <div class="community-dates">July 2023 &ndash; Present</div>
+        </div>
+        <div class="community-card">
+          <div class="community-role">Advisory Board Member</div>
+          <div class="community-org">United Way of Greater Dayton, Greene County</div>
+          <div class="community-dates">October 2021 &ndash; Present</div>
+        </div>
+        <div class="community-card">
+          <div class="community-role">SHRM Foundation Director</div>
+          <div class="community-org">Miami Valley HR Association</div>
+          <div class="community-dates">May 2020 &ndash; January 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-name">Kody D. Barnett, PHR &mdash; Dayton, OH</span>
+    <div class="footer-contact">
+      <a href="tel:9373086347">(937) 308-6347</a>
+      <a href="mailto:kody.barnett@outlook.com">kody.barnett@outlook.com</a>
+      <a href="https://linkedin.com/in/kodybarnett" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.timeline-item').forEach((el, i) => {
+      el.style.borderLeft = '';
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>
